@@ -8,6 +8,7 @@
 /bazel-out
 
 # dependencies
+/projects/sonorous/node_modules
 /node_modules
 
 # profiling files

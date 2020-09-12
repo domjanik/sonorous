@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import {VoicedItemsApiService} from "./domain/voicedItems/voiced-items-api.service";
+import { VoicedItemsApiService } from "./domain/voicedItems/voiced-items-api.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [
+  imports: [HttpClientModule
   ],
   exports: [],
   providers: [VoicedItemsApiService]

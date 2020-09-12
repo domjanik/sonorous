@@ -2,19 +2,40 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "../../dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "sonorous-ui": [
+        "../../dist/sonorous-ui"
+      ],
+      "sonorous-ui/*": [
+        "../../dist/sonorous-ui/*"
+      ],
+      "sonorous-api": [
+        "../../dist/sonorous-api"
+      ],
+      "sonorous-api/*": [
+        "../../dist/sonorous-api/*"
+      ],
+      "sonorous-core": [
+        "../../dist/sonorous-core/sonorous-core",
+        "../../dist/sonorous-core"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

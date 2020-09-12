@@ -1,0 +1,13 @@
+{
+  "defaultProject": "sonorous",
+  "projects": {
+    "sonorous": {
+      "name": "sonorous",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular",
+      "root": "."
+    }
+  }
+}

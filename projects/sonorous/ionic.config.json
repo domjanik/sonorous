@@ -1,7 +1,0 @@
-{
-  "name": "sonorous",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

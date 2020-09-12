@@ -11,17 +11,22 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { environment } from 'src/environments/environment';
 
-import {NgxsModule} from "@ngxs/store";
-import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
-import {NgxsRouterPluginModule, RouterStateSerializer} from "@ngxs/router-plugin";
-import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
-import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
+import { NgxsModule } from "@ngxs/store";
+import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
+import { NgxsRouterPluginModule, RouterStateSerializer } from "@ngxs/router-plugin";
+import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { VoicedItemsState } from './state/voicedItems/voicedItems.state';
+import { SonorousApiModule } from "sonorous-api";
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    SonorousApiModule,
     NgxsModule.forRoot([
       VoicedItemsState
     ]),
