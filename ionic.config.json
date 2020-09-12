@@ -4,7 +4,7 @@
     "sonorous": {
       "name": "sonorous",
       "integrations": {
-        "capacitor": {}
+        "cordova": {}
       },
       "type": "angular",
       "root": "."

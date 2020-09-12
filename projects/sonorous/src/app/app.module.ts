@@ -18,14 +18,27 @@ import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { VoicedItemsState } from './state/voicedItems/voicedItems.state';
 import { SonorousApiModule } from "sonorous-api";
+import { SonorousUiModule } from "sonorous-ui";
+import { I18nModule } from "sonorous-core";
+import { BottomMenuComponent } from './layout/bottom-menu/bottom-menu.component';
+import { TopMenuComponent } from './layout/top-menu/top-menu.component';
+import * as EN from './i18n/en';
+import * as PL from './i18n/pl';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent],
+  declarations: [AppComponent, LayoutComponent, BottomMenuComponent, TopMenuComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
+    BrowserModule,
+    SonorousUiModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    I18nModule.forRoot({
+      keys: {
+        en: EN.default,
+        pl: PL.default
+      }
+    }),
     SonorousApiModule,
     NgxsModule.forRoot([
       VoicedItemsState

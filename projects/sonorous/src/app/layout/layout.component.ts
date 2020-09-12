@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'sonorous-layout',
@@ -8,13 +7,10 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  goTo(route) {
-    this.router.navigate(["app", route])
-  }
 }

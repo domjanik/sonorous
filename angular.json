@@ -92,7 +92,7 @@
       },
       "root": "projects/sonorous",
       "sourceRoot": "projects/sonorous/src",
-      "prefix": "app",
+      "prefix": "sonorous",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -110,6 +110,11 @@
             "styles": [
               "projects/sonorous/src/global.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./projects"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -146,6 +151,14 @@
           "options": {
             "proxyConfig": "proxy.conf.json",
             "browserTarget": "sonorous:build"
+          },
+          "styles": [
+            "projects/sonorous/src/global.scss"
+          ],
+          "stylePreprocessorOptions": {
+            "includePaths": [
+              "./projects"
+            ]
           },
           "configurations": {
             "production": {

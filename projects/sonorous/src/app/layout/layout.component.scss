@@ -1,24 +1,8 @@
-
-
-:host {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-
-  .page-content {
-    flex: 1 1 auto;
+.page-content {
     display: flex;
-    width: 100%;
-    max-width: 1366px;
-    background-color: red;
-    height: 100%;
-    overflow: hidden;
-    margin-top: 50px;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    border: 1px solid #707070;
-  }
+    flex-direction: column;
+    height: 100vh;
+    router-outlet {
+        flex: 1 1 auto;
+    }
 }

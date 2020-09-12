@@ -1,0 +1,25 @@
+@import "sonorous-ui/src/values/colors";
+@import "sonorous-ui/src/values/spacings";
+
+:host {
+    flex: 0 1 60px;
+    display: flex;
+    align-items: center;
+    padding-left: $spacing-xxlarge;
+    padding-right: $spacing-large;
+    font-weight: bold;
+    width: 100%;
+    background-color: $sonorous-blue-medium;
+    justify-content: space-between;
+    span {
+        flex: 0 1 70px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    mat-icon {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

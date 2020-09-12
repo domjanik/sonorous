@@ -1,0 +1,8 @@
+@import "../../../values/colors";
+
+:host {
+    width: 110px;
+    height: 110px;
+    background: $sonorous-yellow-light;
+    border-radius: 28px;
+}

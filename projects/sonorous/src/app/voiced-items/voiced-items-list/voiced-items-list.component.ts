@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from "@ngxs/store";
+import { Store } from "@ngxs/store";
 import { TestAction } from 'src/app/state/voicedItems/actions/form-actions';
 
 @Component({
