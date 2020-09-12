@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SonorousApiComponent } from './sonorous-api.component';
-
-
 
 @NgModule({
-  declarations: [SonorousApiComponent],
+  declarations: [],
   imports: [
   ],
-  exports: [SonorousApiComponent]
+  exports: []
 })
 export class SonorousApiModule { }

@@ -1,0 +1,35 @@
+$sonorous-background-color: #E0E0E0;
+$sonorous-window-background-color: #ffffff;
+
+$sonorous-base-color: #03DAC6;
+$sonorous-error-color: #FC4848;
+$sonorous-dark-grey: #000000;
+$sonorous-dark-secondary-text: #777777;
+$sonorous-dark-primary-text: rgba(black, 0.87);
+$sonorous-light-primary-text: #ffffff;
+
+$sonorous-component-background-red: #F17C7C;
+$sonorous-component-background-green: #9FF17C;
+$sonorous-component-background-gray: #AEAEAE;
+$sonorous-component-background-blue: $sonorous-base-color;
+
+$sonorous-teal: (
+  1: $sonorous-base-color,
+  contrast: (
+    1: $sonorous-light-primary-text,
+  )
+);
+
+$sonorous-red: (
+  1: $sonorous-error-color,
+  contrast: (
+    1: $sonorous-light-primary-text,
+  )
+);
+
+$sonorous-accent: (
+  1: #FCD949,
+  contrast: (
+    1: $sonorous-light-primary-text,
+  )
+);

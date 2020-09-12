@@ -10,10 +10,15 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/sonorous-ui/tsconfig.lib.json",
             "project": "projects/sonorous-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sonorous-ui/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -45,10 +50,15 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/sonorous-api/tsconfig.lib.json",
             "project": "projects/sonorous-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sonorous-api/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -92,13 +102,13 @@
             "main": "projects/sonorous/src/main.ts",
             "polyfills": "projects/sonorous/src/polyfills.ts",
             "tsConfig": "projects/sonorous/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/sonorous/src/favicon.ico",
               "projects/sonorous/src/assets"
             ],
             "styles": [
-              "projects/sonorous/src/styles.scss"
+              "projects/sonorous/src/global.scss"
             ],
             "scripts": []
           },
@@ -112,10 +122,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -163,7 +170,7 @@
               "projects/sonorous/src/assets"
             ],
             "styles": [
-              "projects/sonorous/src/styles.scss"
+              "projects/sonorous/src/global.scss"
             ],
             "scripts": []
           }
@@ -194,10 +201,52 @@
           }
         }
       }
-    }},
+    },
+    "sonorous-core": {
+      "projectType": "library",
+      "root": "projects/sonorous-core",
+      "sourceRoot": "projects/sonorous-core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/sonorous-core/tsconfig.lib.json",
+            "project": "projects/sonorous-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sonorous-core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sonorous-core/src/test.ts",
+            "tsConfig": "projects/sonorous-core/tsconfig.spec.json",
+            "karmaConfig": "projects/sonorous-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sonorous-core/tsconfig.lib.json",
+              "projects/sonorous-core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "sonorous",
-   "cli": {
-    "defaultCollection": "@ionic/angular-toolkit"
+  "cli": {
+    "defaultCollection": "@ionic/angular-toolkit",
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

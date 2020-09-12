@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { SonorousUiComponent } from './sonorous-ui.component';
-
-
+const publicComponents = [];
+import { SonorousUiMaterialsModule } from './modules/sonorous-ui-materials.module';
 
 @NgModule({
-  declarations: [SonorousUiComponent],
+  declarations: [...publicComponents],
   imports: [
+    SonorousUiMaterialsModule
   ],
-  exports: [SonorousUiComponent]
+  exports: [...publicComponents, SonorousUiMaterialsModule]
 })
 export class SonorousUiModule { }
