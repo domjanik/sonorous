@@ -2,5 +2,198 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "sonorous-ui": {
+      "projectType": "library",
+      "root": "projects/sonorous-ui",
+      "sourceRoot": "projects/sonorous-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sonorous-ui/tsconfig.lib.json",
+            "project": "projects/sonorous-ui/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sonorous-ui/src/test.ts",
+            "tsConfig": "projects/sonorous-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/sonorous-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sonorous-ui/tsconfig.lib.json",
+              "projects/sonorous-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sonorous-api": {
+      "projectType": "library",
+      "root": "projects/sonorous-api",
+      "sourceRoot": "projects/sonorous-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sonorous-api/tsconfig.lib.json",
+            "project": "projects/sonorous-api/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sonorous-api/src/test.ts",
+            "tsConfig": "projects/sonorous-api/tsconfig.spec.json",
+            "karmaConfig": "projects/sonorous-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sonorous-api/tsconfig.lib.json",
+              "projects/sonorous-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sonorous": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/sonorous",
+      "sourceRoot": "projects/sonorous/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sonorous",
+            "index": "projects/sonorous/src/index.html",
+            "main": "projects/sonorous/src/main.ts",
+            "polyfills": "projects/sonorous/src/polyfills.ts",
+            "tsConfig": "projects/sonorous/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/sonorous/src/favicon.ico",
+              "projects/sonorous/src/assets"
+            ],
+            "styles": [
+              "projects/sonorous/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sonorous/src/environments/environment.ts",
+                  "with": "projects/sonorous/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sonorous:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sonorous:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sonorous:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sonorous/src/test.ts",
+            "polyfills": "projects/sonorous/src/polyfills.ts",
+            "tsConfig": "projects/sonorous/tsconfig.spec.json",
+            "karmaConfig": "projects/sonorous/karma.conf.js",
+            "assets": [
+              "projects/sonorous/src/favicon.ico",
+              "projects/sonorous/src/assets"
+            ],
+            "styles": [
+              "projects/sonorous/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sonorous/tsconfig.app.json",
+              "projects/sonorous/tsconfig.spec.json",
+              "projects/sonorous/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sonorous/e2e/protractor.conf.js",
+            "devServerTarget": "sonorous:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sonorous:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "sonorous"
 }
