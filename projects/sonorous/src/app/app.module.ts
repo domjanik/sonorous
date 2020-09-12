@@ -8,11 +8,35 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout.component';
+import { environment } from 'src/environments/environment';
+
+import {NgxsModule} from "@ngxs/store";
+import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
+import {NgxsRouterPluginModule, RouterStateSerializer} from "@ngxs/router-plugin";
+import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
+import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
+import { VoicedItemsState } from './state/voicedItems/voicedItems.state';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    NgxsModule.forRoot([
+      VoicedItemsState
+    ]),
+    NgxsRouterPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot({
+      disabled: environment.production,
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production,
+      maxAge: 10,
+    }),
+    NgxsStoragePluginModule.forRoot({
+      key: ['auth.userName', 'auth.sessionToken']
+    })
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -20,4 +44,4 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
