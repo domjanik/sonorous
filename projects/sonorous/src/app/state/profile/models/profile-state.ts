@@ -18,7 +18,7 @@ export const initValues: ProfileStateInterface = {
   profileFormData: {
     name: "Adam",
     birthDate: new Date(1992, 2, 14),
-    discountType: 1,
+    discountType: 4,
     phoneNumber: "123 123 123",
     gender: 0
   }
