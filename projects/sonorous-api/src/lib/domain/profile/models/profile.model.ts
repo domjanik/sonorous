@@ -1,6 +1,7 @@
 export class Profile {
     name: string;
     birthDate: Date;
-    discountType: string;
+    discountType: number;
     phoneNumber: string;
+    gender: number;
 }
