@@ -1,3 +1,5 @@
 export enum VoicedItemsEndpoint {
-  voicedItem = 'weatherforecast/'
+  voicedItem = 'Items/',
+  categories = 'Items/GetAllMainCategories',
+  categoryItems = 'Items/GetChildCategories'
 }

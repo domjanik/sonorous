@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from "@ngxs/store";
-import { TestAction } from 'src/app/state/voicedItems/actions/form-actions';
+import { Store, Select } from "@ngxs/store";
+import { GetItemsAction, GetCategoriesAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sonorous-voiced-items-list',
@@ -8,13 +10,24 @@ import { TestAction } from 'src/app/state/voicedItems/actions/form-actions';
   styleUrls: ['./voiced-items-list.component.scss'],
 })
 export class VoicedItemsListComponent implements OnInit {
+  @Select('voicedItems.isLoading') isLoading: Observable<boolean>;
+  @Select('voicedItems.voicedItems') categories: Observable<any[]>;
 
-  constructor(private store: Store) { console.log("test") }
+  constructor(private store: Store, private router: Router) { }
 
-  ngOnInit() { }
-
-  exampleGet() {
-    this.store.dispatch(new TestAction());
+  ngOnInit() {
+    this.store.dispatch(new GetCategoriesAction());
   }
 
+  categoryClicked(category: any) {
+    if (category.hasChildren) {
+      this.store.dispatch(new GetItemsAction(category.id));
+    } else {
+      this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
+      // let audio = new Audio();
+      // audio.src = "../../../assets/audio/alarm.wav";
+      // audio.load();
+      // audio.play();
+    }
+  }
 }

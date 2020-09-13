@@ -5,18 +5,30 @@
     flex: 0 1 60px;
     display: flex;
     align-items: center;
-    padding-left: $spacing-xxlarge;
+    padding-left: $spacing-medium;
     padding-right: $spacing-large;
     font-weight: bold;
     width: 100%;
     background-color: $sonorous-blue-medium;
-    justify-content: space-between;
-    span {
+
+    .back-arrow-area {
+        flex: 0 1 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .controls {
         flex: 0 1 70px;
         display: flex;
         justify-content: space-between;
     }
-    
+
+    .category-title {
+        flex: 1 1 auto;
+    }
+
     mat-icon {
         &:hover {
             cursor: pointer;
