@@ -23,6 +23,6 @@ export class FavoriteListComponent implements OnInit {
   categoryClicked(category: any) {
     this.store.dispatch(new SetSelectionAction(category.id));
     this.store.dispatch(new SetSelectionFormValuesAction([...category.fields]));
-    this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
+    this.router.navigate(['app', 'voiceditems', 'choose', category.categoryId]);
   }
 }

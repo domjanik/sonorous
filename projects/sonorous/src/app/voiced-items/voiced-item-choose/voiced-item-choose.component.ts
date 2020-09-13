@@ -3,7 +3,7 @@ import { Store, Select } from "@ngxs/store";
 import { ActivatedRoute, Router } from '@angular/router';
 import { VoicedItemModel } from 'src/app/state/voicedItems/models/voicedItemModel';
 import { Observable } from 'rxjs';
-import { SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { LoadVoicedItemAction, SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { first } from 'rxjs/operators';
 import { AddFavoriteItemAction, RemoveFavoriteItemAction } from 'src/app/state/favorite/actions/list-actions';
 import { FavoriteFieldModel } from 'src/app/state/favorite/models/favoriteModel';
@@ -36,6 +36,7 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
     })
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.store.dispatch(new LoadVoicedItemAction(this.id))
     });
 
     this.fieldValues.pipe(first()).subscribe((fields) => {
