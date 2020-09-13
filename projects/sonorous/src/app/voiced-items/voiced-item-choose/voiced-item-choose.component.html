@@ -12,10 +12,10 @@
 </div>
 <div class="controls">
     <button mat-raised-button (click)="play()" color="accent">{{'voicedItems.say' | translate}}</button>
-    <button mat-raised-button color="accent" (click)="addToFavorite()">
+    <button mat-raised-button color="accent" (click)="addToFavorite()" *ngIf="!(voicedItem | async).isFavourite">
         <mat-icon>favorite_border</mat-icon>
     </button>
-    <button mat-raised-button color="accent" (click)="removeFromFavorite()">
+    <button mat-raised-button color="accent" (click)="removeFromFavorite()" *ngIf="(voicedItem | async).isFavourite">
         <mat-icon>favorite</mat-icon>
     </button>
 </div>

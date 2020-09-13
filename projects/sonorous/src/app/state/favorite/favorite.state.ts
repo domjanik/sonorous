@@ -48,6 +48,8 @@ export class FavoriteState {
       categoryName: action.name,
       fields: action.fields
     }).pipe(first()).subscribe((data: FavoriteModel[]) => {
+      ctx.dispatch(new LoadVoicedItemAction(action.id))
+
     })
   }
 }

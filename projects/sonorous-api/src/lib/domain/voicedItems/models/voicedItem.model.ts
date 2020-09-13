@@ -3,6 +3,6 @@ export class VoicedItem {
     displayName: string;
     id: string;
     image?: string;
-    hasChildren: boolean
-  
+    hasChildren: boolean;
+    isFavourite: boolean;
 }
