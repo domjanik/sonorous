@@ -20,14 +20,18 @@ export class TopMenuComponent implements OnInit, OnDestroy {
   private hasItems: boolean = false;
   public pageTitle: string = "";
 
-  @HostBinding('class.choose')
+  @HostBinding('class')
   get valid() {
-    return this.currentRoute ? this.currentRoute?.indexOf("choose") !== -1 || this.currentRoute?.indexOf("profile") !== -1 : false
-  }
-
-  @HostBinding('class.showBack')
-  get showBack() {
-    return this.hasItems || this.currentRoute ? this.currentRoute?.indexOf("choose") !== -1 || this.currentRoute?.indexOf("profile") !== -1 : false;
+    let classes = ""
+    if (this.hasItems) {
+      classes += "showBack"
+    }
+    if (this.currentRoute) {
+      if (this.currentRoute?.indexOf("choose") !== -1 || this.currentRoute?.indexOf("profile") !== -1) {
+        classes += " showBack choose"
+      }
+    }
+    return classes;
   }
 
   constructor(private router: Router, private store: Store, private activeRoute: ActivatedRoute) {

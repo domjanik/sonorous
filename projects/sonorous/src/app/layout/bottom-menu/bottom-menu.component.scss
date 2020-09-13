@@ -6,7 +6,6 @@
     display: flex;
     font-weight: bold;
     width: 100%;
-    background-color: $sonorous-blue-medium;
     flex-direction: column;
     overflow: hidden;
     position: relative;
@@ -30,6 +29,7 @@
     .bottom-panel {
         flex: 1 1 auto;
         padding: 0 $spacing-large;
+        background-color: $sonorous-blue-medium;
         align-items: center;
         justify-content: space-between;
     }

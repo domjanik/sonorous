@@ -9,12 +9,38 @@
 .image-area {
     background-color: $sonorous-blue-medium;
     flex: 0 1 250px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .image-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .image-label {
+        font-size: 20px;
+        color: white;
+        margin-top: 12px;
+    }
 }
 
 .form-row {
     padding: 0 $spacing-large;
     flex: 1 1 auto;
     display: flex;
+
+    &:first-child {
+        margin-top: $spacing-small;
+    }
 
     &>* {
         flex: 1 1 auto;

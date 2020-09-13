@@ -7,5 +7,11 @@ export interface ProfileStateInterface {
 
 export const initValues: ProfileStateInterface = {
   isLoading: false,
-  profileData: null
+  profileData: {
+    name: "Adam",
+    birthDate: new Date(1992, 2, 14),
+    discountType: 1,
+    phoneNumber: "123 123 123",
+    gender: 0
+  }
 };

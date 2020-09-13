@@ -16,6 +16,7 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
   checked: boolean;
   id: string;
   private sub: any;
+  showMock: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store) { }
 
@@ -32,5 +33,17 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  play() {
+    this.showMock = true;
+    let audio = new Audio();
+    audio.src = "http://localhost:5000/api/Voice/GetVoice/Ticket";
+    audio.load();
+    audio.play();
+    audio.onended = (() => {
+      this.showMock = false;
+    })
+
   }
 }

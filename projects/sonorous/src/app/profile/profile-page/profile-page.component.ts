@@ -12,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
-  @Select('cyclic.paymentForm') paymentFormData: Observable<ProfileModel>;
+  @Select('profile.profileData') paymentFormData: Observable<ProfileModel>;
 
   paymentForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -33,8 +33,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         this.paymentForm.setValue({
           name: data.name,
           birthDate: data.birthDate,
-          discountType: data.discountType,
-          phoneNumber: data.phoneNumber
+          discountType: Number(data.discountType),
+          phoneNumber: data.phoneNumber,
+          gender: Number(data.gender)
         });
       }
     })

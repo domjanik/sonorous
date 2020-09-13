@@ -1,4 +1,10 @@
 <div class="image-area">
+  <div class="image-container">
+    <img src="../../../assets/pobrane.jpeg" />
+  </div>
+  <div class="image-label">
+    {{('profile.greeting' | translate) + " " + (paymentFormData | async).name + "!"}}
+  </div>
 </div>
 <form [formGroup]="paymentForm" autocomplete="off">
   <div class="form-row">
@@ -46,15 +52,18 @@
   </div>
   <div class="form-row">
     <mat-form-field appearance="fill">
-      <mat-radio-button formControlName="discountType" class="example-radio-button" value="0">
-        {{'profile.male' | translate}}
-      </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="1">
-        {{'profile.female' | translate}}
-      </mat-radio-button>
-      <mat-radio-button class="example-radio-button" value="2">
-        {{'profile.other' | translate}}
-      </mat-radio-button>
+      <mat-label>{{'profile.gender' | translate}}</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option [value]="0">
+          {{'profile.male' | translate}}
+        </mat-option>
+        <mat-option [value]="1">
+          {{'profile.female' | translate}}
+        </mat-option>
+        <mat-option [value]="2">
+          {{'profile.other' | translate}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="form-row">

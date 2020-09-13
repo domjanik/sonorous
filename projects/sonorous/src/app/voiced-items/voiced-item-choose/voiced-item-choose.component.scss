@@ -9,6 +9,12 @@
 .image-area {
     background-color: $sonorous-blue-medium;
     flex: 0 1 250px;
+
+    img {
+        max-height: 200px;
+        width: 100%;
+        fill: white;
+    }
 }
 
 .options {
