@@ -25,7 +25,8 @@ export class ProfileState {
     ctx.dispatch(new SetProfileLoadingAction(true));
     this.profileApiService.getProfile().pipe(first()).subscribe((data: ProfileModel) => {
       ctx.patchState({
-        profileData: { ...data }
+        profileData: { ...data },
+        profileFormData: { ...data }
       })
       ctx.dispatch(new SetProfileLoadingAction(false));
     }, () => {
@@ -35,23 +36,23 @@ export class ProfileState {
 
   @Action(UpdateProfileAction)
   updateProfileAction(ctx: StateContext<ProfileStateInterface>, action: UpdateProfileAction) {
-    ctx.dispatch(new SetProfileLoadingAction(true));
+    // ctx.dispatch(new SetProfileLoadingAction(true));
     const state = ctx.getState();
-    this.profileApiService.updateProfile(state.profileData).pipe(first()).subscribe((data: ProfileModel) => {
-      ctx.patchState({
-        profileData: { ...data }
-      })
-      ctx.dispatch(new SetProfileLoadingAction(false));
-    }, () => {
-      ctx.dispatch(new SetProfileLoadingAction(false));
+    // this.profileApiService.updateProfile(state.profileData).pipe(first()).subscribe((data: ProfileModel) => {
+    ctx.patchState({
+      profileData: { ...state.profileFormData }
     })
+    // ctx.dispatch(new SetProfileLoadingAction(false));
+    // }, () => {
+    // ctx.dispatch(new SetProfileLoadingAction(false));
+    // })
   }
 
   @Action(UpdateProfileFormAction)
   updateProfileFormAction(ctx: StateContext<ProfileStateInterface>, action: UpdateProfileFormAction) {
     let state = ctx.getState();
     ctx.patchState({
-      profileData: { ...state.profileData, ...action.profileData }
+      profileFormData: { ...state.profileFormData, ...action.profileData }
     });
   }
 }

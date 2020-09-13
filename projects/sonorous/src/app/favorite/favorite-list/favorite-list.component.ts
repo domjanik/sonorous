@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, Select } from "@ngxs/store";
+import { SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { GetFavoriteItemsAction } from 'src/app/state/favorite/actions/list-actions';
 
 @Component({
   selector: 'sonorous-favorite-list',
@@ -6,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favorite-list.component.scss'],
 })
 export class FavoriteListComponent implements OnInit {
+  @Select('favorite.isLoading') isLoading: Observable<boolean>;
+  @Select('favorite.favoriteFullObjects') categories: Observable<any[]>;
 
-  constructor() { }
+  constructor(private store: Store, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(new GetFavoriteItemsAction());
+  }
 
+  categoryClicked(category: any) {
+    this.store.dispatch(new SetSelectionAction(category.id));
+    this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
+  }
 }

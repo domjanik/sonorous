@@ -3,6 +3,7 @@ export default {
     voiceditems: "Categories",
     voicedItems: "Categories",
     profile: "Profile",
+    settings: "Settings",
     favorite: "Favorite"
   }
 };

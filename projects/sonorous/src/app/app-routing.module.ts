@@ -11,6 +11,12 @@ const routes: Routes = [
       },
       {
         path: 'profile', loadChildren: () => import('src/app/profile/profile.module').then(m => m.ProfileModule)
+      },
+      {
+        path: 'favorite', loadChildren: () => import('src/app/favorite/favorite.module').then(m => m.FavoriteModule)
+      },
+      {
+        path: 'settings', loadChildren: () => import('src/app/settings/settings.module').then(m => m.SettingsModule)
       }]
   },
   { path: '', redirectTo: '/app/voiceditems', pathMatch: 'full' },

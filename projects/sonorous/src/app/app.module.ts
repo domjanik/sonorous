@@ -29,6 +29,7 @@ import { I18nModule } from "sonorous-core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from '@angular/common';
 import { ProfileState } from './state/profile/profile.state';
+import { FavoriteState } from './state/favorite/favorite.state';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent, BottomMenuComponent, TopMenuComponent],
@@ -49,7 +50,8 @@ import { ProfileState } from './state/profile/profile.state';
     SonorousApiModule,
     NgxsModule.forRoot([
       VoicedItemsState,
-      ProfileState
+      ProfileState,
+      FavoriteState
     ]),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({

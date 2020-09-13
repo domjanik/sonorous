@@ -11,6 +11,9 @@ export class ListButtonComponent implements OnInit {
   @HostBinding("class.has-children")
   @Input() hasChildren: boolean;
 
+  @HostBinding("class.is-favorite")
+  @Input() isFavorite: boolean;
+
   constructor() { }
 
   ngOnInit() { }

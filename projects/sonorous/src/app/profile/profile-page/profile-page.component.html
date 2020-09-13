@@ -3,10 +3,10 @@
     <img src="../../../assets/pobrane.jpeg" />
   </div>
   <div class="image-label">
-    {{('profile.greeting' | translate) + " " + (paymentFormData | async).name + "!"}}
+    {{('profile.greeting' | translate) + " " + (profileData | async).name + "!"}}
   </div>
 </div>
-<form [formGroup]="paymentForm" autocomplete="off">
+<form [formGroup]="profileForm" autocomplete="off">
   <div class="form-row">
     <mat-form-field appearance="fill">
       <mat-label>{{'profile.firstName' | translate}}</mat-label>
@@ -67,6 +67,6 @@
     </mat-form-field>
   </div>
   <div class="form-row">
-    <button mat-raised-button color="accent">{{'profile.save' | translate}}</button>
+    <button mat-raised-button color="accent" (click)="saveProfile()">{{'profile.save' | translate}}</button>
   </div>
 </form>

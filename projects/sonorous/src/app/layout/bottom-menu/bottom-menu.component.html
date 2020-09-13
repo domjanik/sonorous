@@ -5,11 +5,11 @@
   </div>
 </div>
 <div class="bottom-panel">
-  <mat-icon>favorite</mat-icon>
+  <mat-icon (click)="goTo('favorite')">favorite</mat-icon>
 
 
   <span>
     <mat-icon (click)="goTo('profile')">person</mat-icon>
-    <mat-icon>settings</mat-icon>
+    <mat-icon (click)="goTo('settings')">settings</mat-icon>
   </span>
 </div>

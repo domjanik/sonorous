@@ -11,6 +11,7 @@
     flex: 0 1 250px;
 
     img {
+        filter: invert(1);
         max-height: 200px;
         width: 100%;
         fill: white;

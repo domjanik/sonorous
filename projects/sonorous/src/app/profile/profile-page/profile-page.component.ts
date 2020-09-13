@@ -12,9 +12,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
-  @Select('profile.profileData') paymentFormData: Observable<ProfileModel>;
+  @Select('profile.profileData') profileData: Observable<ProfileModel>;
+  @Select('profile.profileFormData') profileFormData: Observable<ProfileModel>;
 
-  paymentForm = new FormGroup({
+  profileForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     birthDate: new FormControl('', [Validators.required]),
     discountType: new FormControl('', [Validators.required]),
@@ -28,9 +29,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.paymentFormData.subscribe((data) => {
+    this.profileFormData.subscribe((data) => {
       if (data) {
-        this.paymentForm.setValue({
+        this.profileForm.setValue({
           name: data.name,
           birthDate: data.birthDate,
           discountType: Number(data.discountType),
@@ -40,7 +41,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       }
     })
 
-    this.formSubscription = this.paymentForm.valueChanges.pipe(
+    this.formSubscription = this.profileForm.valueChanges.pipe(
       debounceTime(250),
       distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))).subscribe((value) => {
         this.store.dispatch(new UpdateProfileFormAction(value))
@@ -52,9 +53,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     this.formSubscription.unsubscribe();
   }
 
-  savePayment() {
-    if (this.paymentForm.status === "VALID") {
-      this.paymentFormData.pipe(first()).subscribe((data) => {
+  saveProfile() {
+    if (this.profileForm.status === "VALID") {
+      this.profileFormData.pipe(first()).subscribe(() => {
         this.store.dispatch(new UpdateProfileAction());
       });
     }

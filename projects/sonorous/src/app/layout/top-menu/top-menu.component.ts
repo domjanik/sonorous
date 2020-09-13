@@ -16,7 +16,6 @@ export class TopMenuComponent implements OnInit, OnDestroy {
   @Select('voicedItems.selectedVoicedItem') voicedItem: Observable<VoicedItemModel>;
   private sub: Subscription;
   private currentRoute: string = "";
-  private id: string;
   private hasItems: boolean = false;
   public pageTitle: string = "";
 
@@ -27,7 +26,7 @@ export class TopMenuComponent implements OnInit, OnDestroy {
       classes += "showBack"
     }
     if (this.currentRoute) {
-      if (this.currentRoute?.indexOf("choose") !== -1 || this.currentRoute?.indexOf("profile") !== -1) {
+      if (this.currentRoute.toLowerCase() !== '/app/voiceditems') {
         classes += " showBack choose"
       }
     }

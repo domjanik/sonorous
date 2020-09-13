@@ -11,6 +11,10 @@
     background-color: $sonorous-blue-dark;
     border-radius: 28px;
 
+    img {
+        filter: invert(1);
+    }
+
     padding: $spacing-medium;
     -webkit-box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.75);
@@ -23,7 +27,16 @@
 }
 
 :host.has-children {
+    img {
+        filter: none;
+    }
     .container {
         background-color: $sonorous-yellow-light;
+    }
+}
+
+:host.is-favorite {
+    .container {
+        background-color: $sonorous-yellow-dark;
     }
 }
