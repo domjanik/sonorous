@@ -5,6 +5,8 @@ import { VoicedItemModel } from 'src/app/state/voicedItems/models/voicedItemMode
 import { Observable } from 'rxjs';
 import { SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { first } from 'rxjs/operators';
+import { AddFavoriteItemAction } from 'src/app/state/favorite/actions/list-actions';
+import { FavoriteFieldModel } from 'src/app/state/favorite/models/favoriteModel';
 
 @Component({
   selector: 'sonorous-voiced-item-choose',
@@ -13,10 +15,16 @@ import { first } from 'rxjs/operators';
 })
 export class VoicedItemChooseComponent implements OnInit, OnDestroy {
   @Select('voicedItems.selectedVoicedItem') voicedItem: Observable<VoicedItemModel>;
+  @Select('voicedItems.selectedVoicedItemFields') fieldValues: Observable<FavoriteFieldModel[]>;
+
   checked: boolean;
   id: string;
   private sub: any;
   showMock: boolean = false;
+
+  amountEnabled: boolean = false;
+  discount: boolean = false;
+  amount: number = 0;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store) { }
 
@@ -29,6 +37,23 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+
+    this.fieldValues.pipe(first()).subscribe((fields) => {
+      fields.forEach((field: any) => {
+        let convertedField: number | boolean | string;
+        switch (field.type) {
+          case 0:
+            convertedField = (field.value === "true")
+            break;
+          case 1:
+            convertedField = Number(field.value);
+            break;
+          default:
+            convertedField = field.value
+        }
+        this[field.name] = convertedField;
+      })
+    })
   }
 
   ngOnDestroy() {
@@ -44,6 +69,23 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
     audio.onended = (() => {
       this.showMock = false;
     })
+  }
 
+  addToFavorite() {
+    this.voicedItem.pipe(first()).subscribe((data) => {
+      this.store.dispatch(new AddFavoriteItemAction(data.id, data.name, [{
+        name: "amount",
+        value: this.amount.toString(),
+        type: 1
+      }, {
+        name: "amountEnabled",
+        value: this.amountEnabled.toString(),
+        type: 0
+      }, {
+        name: "discount",
+        value: this.discount.toString(),
+        type: 0
+      }]));
+    })
   }
 }

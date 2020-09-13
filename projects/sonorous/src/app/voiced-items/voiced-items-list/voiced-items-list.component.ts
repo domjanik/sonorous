@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from "@ngxs/store";
-import { GetItemsAction, GetCategoriesAction, SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { GetItemsAction, GetCategoriesAction, SelectItemAction, SetSelectionAction, SetSelectionFormValuesAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -24,6 +24,7 @@ export class VoicedItemsListComponent implements OnInit {
       this.store.dispatch(new SelectItemAction(category.id));
     } else {
       this.store.dispatch(new SetSelectionAction(category.id));
+      this.store.dispatch(new SetSelectionFormValuesAction([]));
       this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
     }
   }

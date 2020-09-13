@@ -9,12 +9,15 @@ import * as EN from './i18n/en';
 import * as PL from './i18n/pl';
 import { I18nModule } from "sonorous-core";
 import { VoicedItemActiveMockComponent } from './voiced-item-choose/voiced-item-active-mock/voiced-item-active-mock.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [VoicedItemsListComponent, VoicedItemChooseComponent, VoicedItemActiveMockComponent],
   imports: [
     CommonModule,
     SonorousUiModule,
+    FormsModule,
+    ReactiveFormsModule,
     I18nModule.forRoot({
         keys: {
             en: EN.default,

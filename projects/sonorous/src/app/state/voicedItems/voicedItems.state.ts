@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { initValues, VoicedItemsStateInterface } from "./models/voiced-items-state";
 import { VoicedItemsApiService } from "sonorous-api";
 import { first } from "rxjs/operators";
-import { GetItemsAction, SetItemsLoadingAction, GetCategoriesAction, ResetVoicedItemsList, SelectItemAction, SelectPreviousItemAction, ResetItemSelectionAction, GetItemImageAction, SetSelectionAction } from './actions/list-actions';
+import { GetItemsAction, SetItemsLoadingAction, GetCategoriesAction, ResetVoicedItemsList, SelectItemAction, SelectPreviousItemAction, ResetItemSelectionAction, GetItemImageAction, SetSelectionAction, SetSelectionFormValuesAction } from './actions/list-actions';
 import { VoicedItemModel } from './models/voicedItemModel';
 
 @Injectable()
@@ -105,6 +105,13 @@ export class VoicedItemsState {
       ctx.dispatch(new SetItemsLoadingAction(false));
     }, () => {
       ctx.dispatch(new SetItemsLoadingAction(false));
+    })
+  }
+
+  @Action(SetSelectionFormValuesAction)
+  setFormValues(ctx: StateContext<VoicedItemsStateInterface>, action: SetSelectionFormValuesAction) {
+    ctx.patchState({
+      selectedVoicedItemFields: [...action.fields]
     })
   }
 }

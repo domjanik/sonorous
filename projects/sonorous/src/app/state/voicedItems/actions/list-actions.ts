@@ -1,3 +1,5 @@
+import { FavoriteFieldModel } from '../../favorite/models/favoriteModel';
+
 export class SetItemsLoadingAction {
   static readonly type = '[VoicedItems] Set Items Loading Action';
 
@@ -59,5 +61,12 @@ export class SetSelectionAction {
   static readonly type = '[VoicedItems] Set Selection Action';
 
   constructor(public id: string) {
+  }
+}
+
+export class SetSelectionFormValuesAction {
+  static readonly type = '[VoicedItems] Set Selection Form Values Action';
+
+  constructor(public fields: FavoriteFieldModel[]) {
   }
 }

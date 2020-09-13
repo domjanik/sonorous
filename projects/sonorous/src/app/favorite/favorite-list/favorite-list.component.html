@@ -1,5 +1,5 @@
 <div *ngIf="!(isLoading | async)" class="category-container">
-  <sonorous-ui-list-button *ngFor="let category of (categories | async)" [image]="category.name" alt="category-icon"
+  <sonorous-ui-list-button *ngFor="let category of (categories | async)" [image]="category.categoryName" alt="category-icon"
       (click)="categoryClicked(category)" [isFavorite]="true"></sonorous-ui-list-button>
 </div>
 <div *ngIf="isLoading | async" class="progress-spinner-container">

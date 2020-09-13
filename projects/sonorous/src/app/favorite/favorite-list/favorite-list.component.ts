@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from "@ngxs/store";
-import { SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { SelectItemAction, SetSelectionAction, SetSelectionFormValuesAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { GetFavoriteItemsAction } from 'src/app/state/favorite/actions/list-actions';
@@ -12,7 +12,7 @@ import { GetFavoriteItemsAction } from 'src/app/state/favorite/actions/list-acti
 })
 export class FavoriteListComponent implements OnInit {
   @Select('favorite.isLoading') isLoading: Observable<boolean>;
-  @Select('favorite.favoriteFullObjects') categories: Observable<any[]>;
+  @Select('favorite.favoriteItems') categories: Observable<any[]>;
 
   constructor(private store: Store, private router: Router) { }
 
@@ -22,6 +22,7 @@ export class FavoriteListComponent implements OnInit {
 
   categoryClicked(category: any) {
     this.store.dispatch(new SetSelectionAction(category.id));
+    this.store.dispatch(new SetSelectionFormValuesAction([...category.fields]));
     this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
   }
 }

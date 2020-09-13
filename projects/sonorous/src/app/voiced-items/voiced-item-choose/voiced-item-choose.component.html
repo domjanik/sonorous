@@ -3,16 +3,16 @@
 </div>
 <div class="options">
     <div class="option-row">
-        <mat-checkbox >{{'voicedItems.discount' | translate}}</mat-checkbox>
+        <mat-checkbox  [(ngModel)]="discount">{{'voicedItems.discount' | translate}}</mat-checkbox>
     </div>
     <div class="option-row">
-        <mat-checkbox>{{'voicedItems.amount' | translate}}</mat-checkbox>
-        <mat-slider thumbLabel tickInterval="1" min="1" max="10"></mat-slider>
+        <mat-checkbox [(ngModel)]="amountEnabled">{{'voicedItems.amount' | translate}}</mat-checkbox>
+        <mat-slider thumbLabel [(ngModel)]="amount" tickInterval="1" min="1" max="10" [disabled]="amountEnabled"></mat-slider>
     </div>
 </div>
 <div class="controls">
     <button mat-raised-button (click)="play()" color="accent">{{'voicedItems.say' | translate}}</button>
-    <button mat-raised-button color="accent">
+    <button mat-raised-button color="accent" (click)="addToFavorite()">
         <mat-icon>favorite</mat-icon>
     </button>
 </div>
