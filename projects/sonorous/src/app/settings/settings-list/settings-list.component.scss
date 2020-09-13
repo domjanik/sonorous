@@ -1,0 +1,33 @@
+@import "sonorous-ui/src/values/colors";
+@import "sonorous-ui/src/values/spacings";
+
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-area {
+    background-color: $sonorous-blue-medium;
+    flex: 0 1 250px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: $sonorous-white;
+    mat-icon {
+        width: 150px;
+        height: 150px;
+        font-size: 150px;
+    }
+
+}
+
+.control-area {
+    display: flex;
+    padding-top: $spacing-medium;
+    flex-direction: column;
+    button {
+        margin: $spacing-medium $spacing-large;
+        border-color: $sonorous-blue-dark;
+    }
+}
