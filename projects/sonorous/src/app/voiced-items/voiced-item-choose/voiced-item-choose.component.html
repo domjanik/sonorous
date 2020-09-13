@@ -13,9 +13,11 @@
 <div class="controls">
     <button mat-raised-button (click)="play()" color="accent">{{'voicedItems.say' | translate}}</button>
     <button mat-raised-button color="accent" (click)="addToFavorite()">
+        <mat-icon>favorite_border</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" (click)="removeFromFavorite()">
         <mat-icon>favorite</mat-icon>
     </button>
 </div>
-<!-- <mat-icon svgIcon="sonorous-favorite2"></mat-icon> -->
 
 <sonorous-voiced-item-active-mock *ngIf="showMock"></sonorous-voiced-item-active-mock>

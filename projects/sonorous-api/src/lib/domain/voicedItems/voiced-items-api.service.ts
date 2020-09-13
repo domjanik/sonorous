@@ -14,6 +14,10 @@ export class VoicedItemsApiService {
     return this.http.get<any>(`${Endpoint.API(VoicedItemsEndpoint.categoryItems)}/${id}`);
   }
 
+  getCategory(id: string): Observable<any> {
+    return this.http.get<any>(`${Endpoint.API(VoicedItemsEndpoint.voicedItem)}/${id}`);
+  }
+
   getCategories(): Observable<any> {
     return this.http.get<any>(`${Endpoint.API(VoicedItemsEndpoint.categories)}`)
   }

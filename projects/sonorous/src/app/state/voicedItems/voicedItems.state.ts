@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { initValues, VoicedItemsStateInterface } from "./models/voiced-items-state";
 import { VoicedItemsApiService } from "sonorous-api";
 import { first } from "rxjs/operators";
-import { GetItemsAction, SetItemsLoadingAction, GetCategoriesAction, ResetVoicedItemsList, SelectItemAction, SelectPreviousItemAction, ResetItemSelectionAction, GetItemImageAction, SetSelectionAction, SetSelectionFormValuesAction } from './actions/list-actions';
+import { GetItemsAction, SetItemsLoadingAction, GetCategoriesAction, ResetVoicedItemsList, SelectItemAction, SelectPreviousItemAction, ResetItemSelectionAction, GetItemImageAction, SetSelectionAction, SetSelectionFormValuesAction, LoadVoicedItemAction } from './actions/list-actions';
 import { VoicedItemModel } from './models/voicedItemModel';
 
 @Injectable()
@@ -35,7 +35,7 @@ export class VoicedItemsState {
     ctx.patchState({
       selectedVoicedItems: [...state.selectedVoicedItems, action.id]
     });
-    
+
     ctx.dispatch(new GetItemsAction(action.id));
   }
 
@@ -106,6 +106,15 @@ export class VoicedItemsState {
     }, () => {
       ctx.dispatch(new SetItemsLoadingAction(false));
     })
+  }
+
+  @Action(LoadVoicedItemAction)
+  loadVoicedItemAction(ctx: StateContext<VoicedItemsStateInterface>, action: LoadVoicedItemAction) {
+    this.voicedItemsApiService.getCategory(action.id).pipe(first()).subscribe((data: VoicedItemModel) => {
+      ctx.patchState({
+        selectedVoicedItem: { ...data }
+      })
+    });
   }
 
   @Action(SetSelectionFormValuesAction)

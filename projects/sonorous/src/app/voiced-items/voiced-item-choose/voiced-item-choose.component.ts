@@ -5,7 +5,7 @@ import { VoicedItemModel } from 'src/app/state/voicedItems/models/voicedItemMode
 import { Observable } from 'rxjs';
 import { SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { first } from 'rxjs/operators';
-import { AddFavoriteItemAction } from 'src/app/state/favorite/actions/list-actions';
+import { AddFavoriteItemAction, RemoveFavoriteItemAction } from 'src/app/state/favorite/actions/list-actions';
 import { FavoriteFieldModel } from 'src/app/state/favorite/models/favoriteModel';
 
 @Component({
@@ -69,6 +69,12 @@ export class VoicedItemChooseComponent implements OnInit, OnDestroy {
     audio.onended = (() => {
       this.showMock = false;
     })
+  }
+
+  removeFromFavorite() {
+    this.voicedItem.pipe(first()).subscribe((data) => {
+      this.store.dispatch(new RemoveFavoriteItemAction(data.id));
+    });
   }
 
   addToFavorite() {

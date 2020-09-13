@@ -70,3 +70,10 @@ export class SetSelectionFormValuesAction {
   constructor(public fields: FavoriteFieldModel[]) {
   }
 }
+
+export class LoadVoicedItemAction {
+  static readonly type = '[VoicedItems] Load Voiced Item Action';
+
+  constructor(public id: string) {
+  }
+}
