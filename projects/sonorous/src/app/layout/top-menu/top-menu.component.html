@@ -1,8 +1,8 @@
 <span class="back-arrow-area">
-  <mat-icon>arrow_back</mat-icon>
+  <mat-icon (click)="goBack()">arrow_back</mat-icon>
 </span>
 <span class="category-title">
-  {{'menu.categories' | translate}}
+  {{pageTitle | translate}}
 </span>
 <span class="controls">
   <mat-icon>share</mat-icon>

@@ -1,0 +1,22 @@
+@import "sonorous-ui/src/values/colors";
+@import "sonorous-ui/src/values/spacings";
+
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-area {
+    background-color: $sonorous-blue-medium;
+    flex: 0 1 250px;
+}
+
+.form-row {
+    padding: 0 $spacing-large;
+    flex: 1 1 auto;
+    display: flex;
+
+    &>* {
+        flex: 1 1 auto;
+    }
+}

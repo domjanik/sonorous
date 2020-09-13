@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from "@ngxs/store";
-import { GetItemsAction, GetCategoriesAction } from 'src/app/state/voicedItems/actions/list-actions';
+import { GetItemsAction, GetCategoriesAction, SelectItemAction, SetSelectionAction } from 'src/app/state/voicedItems/actions/list-actions';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -21,13 +21,10 @@ export class VoicedItemsListComponent implements OnInit {
 
   categoryClicked(category: any) {
     if (category.hasChildren) {
-      this.store.dispatch(new GetItemsAction(category.id));
+      this.store.dispatch(new SelectItemAction(category.id));
     } else {
+      this.store.dispatch(new SetSelectionAction(category.id));
       this.router.navigate(['app', 'voiceditems', 'choose', category.id]);
-      // let audio = new Audio();
-      // audio.src = "../../../assets/audio/alarm.wav";
-      // audio.load();
-      // audio.play();
     }
   }
 }

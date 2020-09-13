@@ -1,6 +1,6 @@
 <div class="top-panel">
   <div class="home-button-shadow">&nbsp;</div>
-  <div class="home-icon-area" (click)="goTo('voiceditems')">
+  <div class="home-icon-area" (click)="goToHome()">
     <mat-icon>home</mat-icon>
   </div>
 </div>
@@ -9,7 +9,7 @@
 
 
   <span>
-    <mat-icon>person</mat-icon>
+    <mat-icon (click)="goTo('profile')">person</mat-icon>
     <mat-icon>settings</mat-icon>
   </span>
 </div>

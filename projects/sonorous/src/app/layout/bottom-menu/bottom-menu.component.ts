@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from "@ngxs/store";
+import { ResetVoicedItemsList } from 'src/app/state/voicedItems/actions/list-actions';
 
 @Component({
   selector: 'sonorous-bottom-menu',
@@ -8,11 +10,16 @@ import { Router } from '@angular/router';
 })
 export class BottomMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   goTo(route) {
-    this.router.navigate(["app", route])
+    this.router.navigate(["app", route]);
+  }
+
+  goToHome() {
+    this.router.navigate(["/app", "voicedItems"]);
+    this.store.dispatch(new ResetVoicedItemsList())
   }
 }

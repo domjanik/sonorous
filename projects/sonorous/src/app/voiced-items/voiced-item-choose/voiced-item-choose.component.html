@@ -1,0 +1,18 @@
+<div class="image-area">
+    <img [src]="'http://localhost:5000/api/Icons/GetCategoryIcon/' + (voicedItem | async).name">
+</div>
+<div class="options">
+    <div class="option-row">
+        <mat-checkbox [(ngModel)]="checked">{{'voicedItems.discount' | translate}}</mat-checkbox>
+    </div>
+    <div class="option-row">
+        <mat-checkbox [(ngModel)]="checked">{{'voicedItems.amount' | translate}}</mat-checkbox>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="10"></mat-slider>
+    </div>
+</div>
+<div class="controls">
+    <button mat-raised-button color="accent">{{'voicedItems.say' | translate}}</button>
+    <button mat-raised-button color="accent">
+        <mat-icon>favorite</mat-icon>
+    </button>
+</div>

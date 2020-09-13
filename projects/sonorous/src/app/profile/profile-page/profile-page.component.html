@@ -1,3 +1,63 @@
-<p>
-  profile-page works!
-</p>
+<div class="image-area">
+</div>
+<form [formGroup]="paymentForm" autocomplete="off">
+  <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'profile.firstName' | translate}}</mat-label>
+      <input matInput type="string" placeholder="{{'profile.firstName' | translate}}" formControlName="name">
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'profile.birthDate' | translate}}</mat-label>
+      <input matInput formControlName="birthDate" [matDatepicker]="myDatepicker"
+        [placeholder]="'profile.birthDate' | translate">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'profile.phone' | translate}}</mat-label>
+      <input matInput type="string" placeholder="{{'profile.phone' | translate}}" formControlName="phoneNumber">
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'profile.discount' | translate}}</mat-label>
+      <mat-select formControlName="discountType">
+        <mat-option [value]="0">
+          {{'profile.discounts.pupil' | translate}}
+        </mat-option>
+        <mat-option [value]="1">
+          {{'profile.discounts.student' | translate}}
+        </mat-option>
+        <mat-option [value]="2">
+          {{'profile.discounts.child' | translate}}
+        </mat-option>
+        <mat-option [value]="3">
+          {{'profile.discounts.disabilityGroup1' | translate}}
+        </mat-option>
+        <mat-option [value]="4">
+          {{'profile.discounts.disabilityGroup2' | translate}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <mat-form-field appearance="fill">
+      <mat-radio-button formControlName="discountType" class="example-radio-button" value="0">
+        {{'profile.male' | translate}}
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="1">
+        {{'profile.female' | translate}}
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="2">
+        {{'profile.other' | translate}}
+      </mat-radio-button>
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <button mat-raised-button color="accent">{{'profile.save' | translate}}</button>
+  </div>
+</form>

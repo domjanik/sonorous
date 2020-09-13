@@ -17,4 +17,8 @@ export class VoicedItemsApiService {
   getCategories(): Observable<any> {
     return this.http.get<any>(`${Endpoint.API(VoicedItemsEndpoint.categories)}`)
   }
+
+  getImages(id: string): Observable<any> {
+    return this.http.get<any>(`${Endpoint.API(VoicedItemsEndpoint.images)}/${id}`)
+  }
 }

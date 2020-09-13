@@ -26,7 +26,7 @@ import * as PL from './i18n/pl';
 import { SonorousApiModule } from "sonorous-api";
 import { SonorousUiModule } from "sonorous-ui";
 import { I18nModule } from "sonorous-core";
-import { VoicedItemsModule } from './voiced-items/voiced-items.module';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -35,6 +35,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     SonorousUiModule.forRoot(),
     IonicModule.forRoot(),
     AppRoutingModule,

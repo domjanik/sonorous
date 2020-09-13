@@ -6,7 +6,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   styleUrls: ['./list-button.component.scss'],
 })
 export class ListButtonComponent implements OnInit {
-  @Input() url: string;
+  @Input() image: string;
 
   @HostBinding("class.has-children")
   @Input() hasChildren: boolean;

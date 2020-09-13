@@ -1,5 +1,8 @@
 export default {
   menu: {
-    categories: "Kategorie"
+    voiceditems: "Kategorie",
+    voicedItems: "Kategorie",
+    profile: "Profil",
+    favorite: "Ulubione"
   }
 };

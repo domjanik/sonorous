@@ -11,12 +11,29 @@
     width: 100%;
     background-color: $sonorous-blue-medium;
 
+    &.showBack {
+        .back-arrow-area {
+            mat-icon {
+                display: initial;
+            }
+        }
+    }
+
+    &.choose {
+        background-color: $sonorous-blue-dark;
+        color: $sonorous-white;
+    }
+
     .back-arrow-area {
         flex: 0 1 60px;
         height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        mat-icon {
+            display: none
+        }
     }
 
     .controls {

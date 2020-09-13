@@ -1,8 +1,7 @@
 <div *ngIf="!(isLoading | async)" class="category-container">
-    <sonorous-ui-list-button *ngFor="let category of (categories | async)" [url]="category.imageName" alt="category-icon"
+    <sonorous-ui-list-button *ngFor="let category of (categories | async)" [image]="category.name" alt="category-icon"
         (click)="categoryClicked(category)" [hasChildren]="category.hasChildren"></sonorous-ui-list-button>
 </div>
 <div *ngIf="isLoading | async" class="progress-spinner-container">
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
-<img src="http://localhost:5000/api/Icons/GetCategoryIcon/Shop">
